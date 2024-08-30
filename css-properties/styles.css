@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+section {
+    height: 100vh; /* Cada sección ocupará el 100% de la altura de la ventana */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.section-1 {
+    background: url('blue-back.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* La imagen de fondo se queda fija */
+}
+
+.section-2 {
+    background-color: #3498db;
+}
+
+.section-3 {
+    background-color: #2ecc71;
+}
