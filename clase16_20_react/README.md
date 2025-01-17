@@ -1,16 +1,8 @@
-## Clases de la 17 a la 20 de React (de 1 a 4)
+# React + Vite
 
-### Temas
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-1. React + Vite
-2. Componentes
-3. Hooks
-4. Estado: useState
-5. Efecto Secundario: useEffect
-6. Contexto: useContext 
- 
-### Uso:
+Currently, two official plugins are available:
 
-- Instalar dependencias con ```npm install```
-- Ejecutar en consola ```npm run dev```
-- Actualizar repo local con ```git pull``` (luego de cada clase)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

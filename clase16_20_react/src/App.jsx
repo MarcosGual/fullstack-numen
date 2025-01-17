@@ -1,15 +1,13 @@
 import "./App.css";
 import Contador from "./components/Contador";
-import ThemeProvider from "./context/themeProvider";
+import ContadorReduce from "./components/ContadorReduce";
 
 function App() {
-  
   return (
     <div className="container">
-      <h1>Efectos secundarios y Contexto en React</h1>
-      <ThemeProvider>
-        <Contador />
-      </ThemeProvider>
+      <h1>Hook useReducer en React</h1>
+      <Contador />
+      <ContadorReduce />
     </div>
   );
 }
