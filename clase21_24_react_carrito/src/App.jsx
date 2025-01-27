@@ -1,15 +1,15 @@
 import "./App.css";
-import NavBar from "./components/NavBar/NavBar";
-import { CartProvider } from "./context/CartContext";
-import ProductPage from "./pages/ProductPage/ProductPage";
+import Cart from "./cart/Cart";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
+import Main from "./pages/main/Main";
 
 function App() {
   return (
     <>
-      <CartProvider>
-        <NavBar />
-        <ProductPage />
-      </CartProvider>
+      <NavBar />
+      <Main />
+      <Footer />
     </>
   );
 }
