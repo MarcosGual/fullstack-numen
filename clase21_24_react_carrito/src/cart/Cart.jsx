@@ -5,19 +5,22 @@ import CartItem from "./CartItem";
 import { TYPES } from "./actionTypes";
 import axios from "axios";
 
+const productsUrl = "http://localhost:5000/products/";
+const cartUrl = "http://localhost:5000/cart/";
+
 const Cart = () => {
   const [state, dispatch] = useReducer(cartReducer, cartInitialState);
   const [loading, setLoading] = useState(false);
 
   const updateState = async () => {
-    const productsUrl = "http://localhost:5000/products";
-
     try {
       setLoading(true);
-      const productsResponse = await axios.get(productsUrl);
+      const productsResponse = await axios.get(productsUrl); //SOLICITUD HTTP GET (OBTENER)
       const products = productsResponse.data;
+      const cartResponse = await axios.get(cartUrl);
+      const cart = cartResponse.data;
 
-      dispatch({ type: TYPES.READ_STATE, payload: products });
+      dispatch({ type: TYPES.READ_STATE, payload: { products, cart } });
     } catch (error) {
       console.log("Error al cargar los productos", error);
     } finally {
@@ -29,21 +32,44 @@ const Cart = () => {
     updateState();
   }, []);
 
-  const addToCart = (id) => {
+  const addToCart = async (product) => {
+    const existingItem = state.cart.find((item) => item.id === product.id);
+    if (existingItem) {
+      updateQuantity(product.id, existingItem.cantidad + 1);
+    } else {
+      try {
+        const response = await axios.post(cartUrl, { ...product, cantidad: 1 });
+        console.log("respuesta a agregar al carrito ", response);
+      } catch (error) {
+        console.log("Error al agregar al carrito - ", error.message);
+        //alert('Error al agregar al carrito...')
+      }
+    }
     //console.log(id);
-    dispatch({ type: TYPES.ADD_TO_CART, payload: id });
+    dispatch({ type: TYPES.ADD_TO_CART, payload: product.id });
   };
 
-  const removeFromCart = (id, removeAll) => {
+  const updateQuantity = async (id, quantity) => {
+    try {
+      console.log('update quantity id: '+id);
+      await axios.patch(cartUrl+id, {cantidad: quantity});
+    } catch (error) {
+      console.log("Error al actualizar las cantidades - " + error.message);
+    }
+  };
+
+  const removeFromCart = async (item, removeAll) => {
     // console.log(id);
     if (removeAll) {
       const response = window.confirm(
         "¿Desea remover todos los items de este producto?"
       );
       if (!response) return;
-      dispatch({ type: TYPES.REMOVE_ALL_ITEMS, payload: id });
+      await axios.delete(cartUrl+item.id);
+      dispatch({ type: TYPES.REMOVE_ALL_ITEMS, payload: item.id });
     } else {
-      dispatch({ type: TYPES.REMOVE_ITEM, payload: id });
+      updateQuantity(item.id, item.cantidad-1);
+      dispatch({ type: TYPES.REMOVE_ITEM, payload: item.id });
     }
   };
 

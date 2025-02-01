@@ -1,10 +1,10 @@
 import { TYPES } from "./actionTypes";
 
-export const cartInitialState = {
+export const cartInitialState ={
   products: [],
   cart: [],
 };
-
+ 
 export function cartReducer(state, action) {
   switch (action.type) {
     case TYPES.ADD_TO_CART: {
@@ -57,7 +57,7 @@ export function cartReducer(state, action) {
     case TYPES.CLEAR_CART:
       return cartInitialState;
     case TYPES.READ_STATE:
-      return {...state, products: action.payload}
+      return action.payload;
     default:
       return state;
   }

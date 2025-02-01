@@ -1,10 +1,10 @@
-import Cart from "../../cart/Cart";
 import "./main.page.css";
 
 const Main = () => {
   return (
     <div className="main">
-      <Cart />
+      <h1>Bienvenidos Al Carrito de Compras</h1>
+      <h2>Disfrute su estadía...</h2>
     </div>
   );
 };
