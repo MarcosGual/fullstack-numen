@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "id": 100,
+      "name": "remera manga larga",
+      "color": "blanco",
+      "precio": 10000,
+      "stock": 100
+    },
+    {
+      "id": 101,
+      "name": "remera manga corta",
+      "color": "blanco",
+      "precio": 8000,
+      "stock": 80
+    }
+  ]
+}
