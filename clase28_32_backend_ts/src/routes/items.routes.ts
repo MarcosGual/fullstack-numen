@@ -3,10 +3,11 @@ import { getAllItems, getItemById, createItem, updateItemById, deleteItemById, u
 import { validateItem } from "../middlewares/validateItem";
 import { handleValidation } from "../middlewares/handleValidation";
 import { logger } from "../middlewares/logger";
+import { verifyToken } from "../middlewares/authMiddleware";
 
 const router = Router();
 
-router.get("/", getAllItems);
+router.get("/", verifyToken, getAllItems);
 router.get("/baja-item/:id", unsuscribeItemById);
 router.get("/:id", getItemById);
 router.post("/", validateItem, handleValidation, createItem);

@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
-import db from "../../data/db.json";
 import { Prenda } from '../models/Prenda';
 import axios from 'axios';
-import { validationResult } from 'express-validator';
 
 export const getAllItems = async (req: Request, res: Response) => {
     try {

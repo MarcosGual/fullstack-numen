@@ -10,7 +10,7 @@ export interface IPrenda {
     proveedor?: string;
 }
 
-const PrendaSchema = new Schema<IPrenda>(
+const prendaSchema = new Schema<IPrenda>(
     {
         codigo: {type: Number, required: true, unique: true},
         nombre: {type: String, required: true},
@@ -22,4 +22,4 @@ const PrendaSchema = new Schema<IPrenda>(
     {timestamps: true}
 )
 
-export const Prenda = mongoose.model("Prenda", PrendaSchema);
+export const Prenda = mongoose.model("Prenda", prendaSchema);

@@ -10,10 +10,10 @@ export interface IProveedor {
     codigoPostal: string;
 }
 
-const PrendaSchema = new Schema<IProveedor>(
+const proveedorSchema = new Schema<IProveedor>(
     {
     },
     {timestamps: true}
 )
 
-export const Prenda = mongoose.model("Prenda", PrendaSchema);
+export const Prenda = mongoose.model("Prenda", proveedorSchema);
